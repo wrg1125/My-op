@@ -1,0 +1,24 @@
+config interface 'loopback'
+	option device 'lo'
+	option proto 'static'
+	option ipaddr '127.0.0.1'
+	option netmask '255.0.0.0'
+
+config globals 'globals'
+	option ula_prefix 'fd2e:6c72:9f7e::/48'
+
+config interface 'lan'
+	option device 'br-lan'
+	option proto 'static'
+	option ipaddr '10.0.0.1'
+	option netmask '255.255.255.0'
+	option ip6assign '60'
+
+# WAN 口（PPPoE 拨号）
+# 注意：device 默认 eth1（第二个网口）。如果实际 WAN 口不同
+# （或虚拟机里网卡顺序不同），在 LuCI 的"网络-接口"里修改设备名即可。
+config interface 'wan'
+	option device 'eth1'
+	option proto 'pppoe'
+	option username '057600382203'
+	option password '382203'
