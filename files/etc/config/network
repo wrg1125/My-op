@@ -7,6 +7,14 @@ config interface 'loopback'
 config globals 'globals'
 	option ula_prefix 'fd2e:6c72:9f7e::/48'
 
+# br-lan 桥：把 eth0（第一个网口，虚拟机里是 virtio 网卡）桥接进 LAN
+# 注意：如果实际网卡顺序不同（例如直通的 igc 网卡被识别成 eth0），
+# 按 `ip link` 的实际情况修改 ports 里的设备名。
+config device
+	option name 'br-lan'
+	option type 'bridge'
+	list ports 'eth0'
+
 config interface 'lan'
 	option device 'br-lan'
 	option proto 'static'
