@@ -1,0 +1,14 @@
+config core 'main'
+	option lang 'zh_cn'
+	option resourcebase '/luci-static/resources'
+	option mediaurlbase '/luci-static/bootstrap'
+
+config extern 'flash'
+	option upload 'true'
+	option download 'true'
+
+config internal 'ccache'
+	option enable 'false'
+
+config internal 'themes'
+	option Bootstrap '/luci-static/bootstrap'
